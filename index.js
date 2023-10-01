@@ -25,6 +25,18 @@ app.get("/api/hello", function (req, res) {
 });
 
 
+app.get("/api/:date", (req, res) =>{
+  //exemplo 2023-10-01
+  var data = req.params.date
+  var date = new Date(data);
+  var unixTimestamp= Math.floor(date.getTime()/1000);
+
+  return res.json({
+    unix: unixTimestamp
+  })
+
+})
+
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
